@@ -4,8 +4,10 @@ import datetime
 global data
 global old_date
 
-date = datetime(0, 0, 0)
-old_date = datetime(0, 0, 0)
+date = datetime.datetime(1000, 1, 1)
+old_date = datetime.datetime(1000, 1, 1)
+
+print(date.strftime("%Y"))
 
 
 def is_palindrome(d):
