@@ -4,8 +4,8 @@ import datetime
 global data
 global old_date
 
-date = datetime(0, 0, 0, 0)
-old_date = datetime(0, 0, 0, 0)
+date = datetime(0, 0, 0)
+old_date = datetime(0, 0, 0)
 
 
 def is_palindrome(d):
