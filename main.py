@@ -1,8 +1,6 @@
 """ Palindrome days sense 0001 01 01 """
 import datetime
 
-global data
-global old_date
 
 # initializing the global variables
 date = datetime.datetime(1000, 1, 1)
@@ -31,7 +29,7 @@ def diff_years(date1, date2):
 
     y1 = int(date1.strftime("%Y"))
     y2 = int(date2.strftime("%Y"))
-    print(y2-y1, "years is gone.")
+    print(y2-y1, "years after.\n")
 
 
 def duration(old_d, d):
@@ -43,7 +41,7 @@ def duration(old_d, d):
 
     while d < t_date:
         if is_palindrome(d):
-            print(d)
+            print(d.date())
             diff_years(old_d, d)
             old_d = d
 
