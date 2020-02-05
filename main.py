@@ -1,4 +1,4 @@
-""" Palindrome days sense 0001 01 01 """
+""" Palindrome days sense 'date' / set it manual """
 import datetime
 
 
