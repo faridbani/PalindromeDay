@@ -3,9 +3,10 @@ import datetime
 
 
 # initializing the global variables
-date = datetime.datetime(1000, 1, 1)
-old_date = datetime.datetime(1000, 1, 1)
-t_date = datetime.datetime(1200, 12, 30)
+date = datetime.datetime(2020, 1, 1)
+old_date = datetime.datetime(2020, 1, 1)
+max_date = datetime.datetime(3020, 12, 30)
+
 
 def is_palindrome(d):
     """ Checks if the date is a Palindrome day """
@@ -14,7 +15,6 @@ def is_palindrome(d):
     year = d.strftime("%Y")
     mount = d.strftime("%m")
     day = d.strftime("%d")
-    #print(year, mount, day)
 
     if (year[0] == day[1]) and \
         (year[1] == day[0]) and \
@@ -29,23 +29,21 @@ def diff_years(date1, date2):
 
     y1 = int(date1.strftime("%Y"))
     y2 = int(date2.strftime("%Y"))
-    print(y2-y1, "years after.\n")
+    print("After ", y2-y1, " years:")
 
 
 def duration(old_d, d):
     """ go throughout all days """
 
-    max_y = datetime.MAXYEAR
-    min_y = datetime.MINYEAR
     td = datetime.timedelta(1)
 
-    while d < t_date:
+    while d < max_date:
         if is_palindrome(d):
-            print(d.date())
             diff_years(old_d, d)
+            print(d.date(), "\n")
             old_d = d
 
         d += td
 
 
-duration(t_date, date)
+duration(old_date, date)
