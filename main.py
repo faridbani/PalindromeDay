@@ -2,8 +2,10 @@
 import datetime
 
 # initializing the global variables
-date = datetime.datetime(2020, 1, 1)
-old_date = datetime.datetime(2020, 1, 1)
+d = int(input("Pleas giv the begin year: "))
+date = datetime.datetime(d, 1, 1)
+old_date = date
+m = int(input("Pleas giv the end year: "))
 max_date = datetime.datetime(3020, 12, 30)
 
 
@@ -34,7 +36,7 @@ def diff_years(date1, date2):
     print("After ", y2-y1, " years:")
 
 
-def duration(old_d, d):
+def run(old_d, d):
     """ go throughout all days """
 
     # set td to one day timedelta
@@ -50,4 +52,4 @@ def duration(old_d, d):
         d += td
 
 
-duration(old_date, date)
+run(old_date, date)
