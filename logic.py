@@ -1,12 +1,16 @@
 """ Palindrome days sense 'date' / set it manual """
 import datetime
+from logging import setLogRecordFactory
 
-# initializing the global variables
-d = int(input("Pleas giv the begin year: "))
-date = datetime.datetime(d, 1, 1)
-old_date = date
-m = int(input("Pleas giv the end year: "))
-max_date = datetime.datetime(3020, 12, 30)
+
+def diff_years(date1, date2):
+    """ Calculate the diff between the years"""
+
+    # Convert the years data in to a digit
+    y1 = int(date1.strftime("%Y"))
+    y2 = int(date2.strftime("%Y"))
+    # print the difference
+    print("After ", y2-y1, " years:")
 
 
 def is_palindrome(d):
@@ -26,30 +30,30 @@ def is_palindrome(d):
     return f
 
 
-def diff_years(date1, date2):
-    """ Calculate the diff between the years"""
+class Logic:
+    def __init__(self, d, m_d):
+        # initializing the global variables
+        self.date = datetime.datetime(d, 1, 1)
+        self.max_date = datetime.datetime(m_d, 12, 30)
 
-    # Convert the years data in to a digit
-    y1 = int(date1.strftime("%Y"))
-    y2 = int(date2.strftime("%Y"))
-    # print the difference
-    print("After ", y2-y1, " years:")
+    def run(self):
+        """ go throughout all days """
+
+        # set the date and old date to the given date to begin with
+        old_date = self.date
+        date = self.date
+        # set td to one day timedelta
+        td = datetime.timedelta(1)
+
+        # Go through all days to find a Palindrome day and print it
+        while date < self.max_date:
+            if is_palindrome(date):
+                diff_years(old_date, date)
+                print(date.date(), "\n")
+                old_date = date
+            # increase the date with one day
+            date += td
 
 
-def run(old_d, d):
-    """ go throughout all days """
-
-    # set td to one day timedelta
-    td = datetime.timedelta(1)
-
-    # Go through all days to find a Palindrome day and print it
-    while d < max_date:
-        if is_palindrome(d):
-            diff_years(old_d, d)
-            print(d.date(), "\n")
-            old_d = d
-
-        d += td
-
-
-run(old_date, date)
+my_run = Logic(2020, 2090)
+my_run.run()
