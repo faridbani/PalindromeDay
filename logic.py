@@ -55,5 +55,6 @@ class Logic:
             date += td
 
 
-my_run = Logic(2020, 2090)
-my_run.run()
+""" my_run = Logic(2020, 2090)
+my_run.run() """
+
