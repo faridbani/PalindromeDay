@@ -1,73 +1,81 @@
 #import logic
 import sys
-from PyQt5.QtWidgets import QApplication, QLabel, QWidget
+from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QLineEdit
 from PyQt5.QtWidgets import QPushButton, QTextEdit, QVBoxLayout, QHBoxLayout
 
 
 class PalGui:
     """ The GUI class to use interactive date setting """
 
+    # The main application
+    app = QApplication(sys.argv)
+    # The Windows
+    w_base = QWidget()
+    w_left = QWidget()
+    w_right = QWidget()
+    # A label to get information
+    lab1 = QLabel("To calculate all Palindrome days \n Please giv the begin and end year")
+    lab2 = QLabel("The begin year:")
+    lab3 = QLabel("The end year")
+    lab4 = QLabel("The result:")
+    # Create layouts for windows
+    lay = QHBoxLayout()
+    lay_left = QVBoxLayout()
+    lay_right = QVBoxLayout()
+    # The first textfield to giv begin date (year)
+    y_b = QLineEdit("")
+    # The second textfield to giv the end date (year)
+    y_e = QLineEdit("")
+    # The Calculate button
+    calc_b = QPushButton("Calculate")
+
+    # The Clean button
+    clean_b = QPushButton("Clean")
+    res = QTextEdit("")
+
     def __init__(self):
-        # A instance of class Logic to handle the settings
+        # A instance of class Logic to calculate palindrome days
         #log = logic.Logic()
-        # The main application
-        app = QApplication(sys.argv)
+
         # Set application layout
-        #app.setStyle("Fusion")
-        # The Windows
-        w_base = QWidget()
-        w_left = QWidget()
-        w_right = QWidget()
+        self.app.setStyle("Fusion")
 
-        # A label to get information
-        lab1 = QLabel("To calculate all Palindrome days \n Please giv the begin and end year")
-        lab2 = QLabel("The begin year:")
-        lab3 = QLabel("The end year")
-        lab4 = QLabel("The result:")
-
-        # Create layouts for windows
-        lay = QHBoxLayout()
-        lay_left = QVBoxLayout()
-        lay_right = QVBoxLayout()
-
-        # The first textfield to giv begin date (year)
-        y_b = QTextEdit("")
-        y_b.setMaximumHeight(35)
-        # The second textfield to giv the end date (year)
-        y_e = QTextEdit("")
-        y_e.setMaximumHeight(35)
-
-        # The Calculate button
-        calc_b = QPushButton("Calculate")
-        # The Clean button
-        clean_b = QPushButton("Clean")
-
+        #self.y_b.setMaximumHeight(35)
+        #self.y_e.setMaximumHeight(35)
         # The left Box
-        lay_left.addWidget(lab1)
-        lay_left.addWidget(lab2)
+        self.lay_left.addWidget(self.lab1)
+        self.lay_left.addWidget(self.lab2)
         # set the first textfield
-        lay_left.addWidget(y_b)
-        lay_left.addWidget(lab3)
+        self.lay_left.addWidget(self.y_b)
+        self.lay_left.addWidget(self.lab3)
         # Set the second textfield
-        lay_left.addWidget(y_e)
+        self.lay_left.addWidget(self.y_e)
         # Set the layout of the windows
-        lay_left.addWidget(calc_b)
+        self.lay_left.addWidget(self.calc_b)
 
         # The right box
-        lay_right.addWidget(lab4)
-        res = QTextEdit("")
-        lay_right.addWidget(res)
-        lay_right.addWidget(clean_b)
-        w_right.setLayout(lay_right)
-        w_left.setLayout(lay_left)
+        self.lay_right.addWidget(self.lab4)
 
-        lay.addWidget(w_left)
-        lay.addWidget(w_right)
-        w_base.setLayout(lay)
+        self.lay_right.addWidget(self.res)
+        self.lay_right.addWidget(self.clean_b)
+        self.w_right.setLayout(self.lay_right)
+        self.w_left.setLayout(self.lay_left)
 
-        w_base.show()
-        app.setActiveWindow(w_base)
-        sys.exit(app.exec_())
+        self.lay.addWidget(self.w_left)
+        self.lay.addWidget(self.w_right)
+        self.w_base.setWindowTitle("Palindrome days")
+        self.w_base.setLayout(self.lay)
+        self.calc_b.clicked.connect(self.calculate)
+        self.clean_b.clicked.connect(self.clean)
+        self.w_base.show()
+        self.app.setActiveWindow(self.w_base)
+        sys.exit(self.app.exec_())
+
+    def calculate(self):
+        print("Calculate is pushed")
+
+    def clean(self):
+        self.res.setText("")
 
 
 if __name__ == '__main__':
