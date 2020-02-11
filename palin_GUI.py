@@ -1,5 +1,5 @@
 #import logic
-
+import sys
 from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QTextEdit, QVBoxLayout, QHBoxLayout
 
 
@@ -10,7 +10,7 @@ class PalGui:
         # A instance of class Logic to handle the settings
         #log = logic.Logic()
         # The main application
-        app = QApplication([])
+        app = QApplication(sys.argv)
         # Set application layout
         #app.setStyle("Fusion")
         # The Windows
@@ -63,7 +63,8 @@ class PalGui:
 
         w_base.show()
         app.setActiveWindow(w_base)
-        app.exec_()
+        sys.exit(app.exec_())
 
 
-gui = PalGui()
+if __name__ == '__main__':
+    PalGui()
