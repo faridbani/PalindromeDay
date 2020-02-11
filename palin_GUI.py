@@ -1,6 +1,7 @@
 #import logic
 import sys
-from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QTextEdit, QVBoxLayout, QHBoxLayout
+from PyQt5.QtWidgets import QApplication, QLabel, QWidget
+from PyQt5.QtWidgets import QPushButton, QTextEdit, QVBoxLayout, QHBoxLayout
 
 
 class PalGui:
@@ -36,8 +37,10 @@ class PalGui:
         y_e = QTextEdit("")
         y_e.setMaximumHeight(35)
 
-        # The run button
-        r_b = QPushButton("Run")
+        # The Calculate button
+        calc_b = QPushButton("Calculate")
+        # The Clean button
+        clean_b = QPushButton("Clean")
 
         # The left Box
         lay_left.addWidget(lab1)
@@ -48,12 +51,13 @@ class PalGui:
         # Set the second textfield
         lay_left.addWidget(y_e)
         # Set the layout of the windows
-        lay_left.addWidget(r_b)
+        lay_left.addWidget(calc_b)
 
         # The right box
         lay_right.addWidget(lab4)
         res = QTextEdit("")
         lay_right.addWidget(res)
+        lay_right.addWidget(clean_b)
         w_right.setLayout(lay_right)
         w_left.setLayout(lay_left)
 
