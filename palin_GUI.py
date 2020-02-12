@@ -1,4 +1,4 @@
-#import logic
+import logic
 import sys
 from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QLineEdit
 from PyQt5.QtWidgets import QPushButton, QTextEdit, QVBoxLayout, QHBoxLayout
@@ -32,11 +32,12 @@ class PalGui:
     # The Clean button
     clean_b = QPushButton("Clean")
     res = QTextEdit("")
+    res.setReadOnly(True)
 
     def __init__(self):
         # A instance of class Logic to calculate palindrome days
-        #log = logic.Logic()
-
+        self.log = logic.Logic(2020, 2050)
+        self.result = []
         # Set application layout
         self.app.setStyle("Fusion")
 
@@ -72,7 +73,13 @@ class PalGui:
         sys.exit(self.app.exec_())
 
     def calculate(self):
-        print("Calculate is pushed")
+        yb = int(self.y_b.text())
+        ye = (self.y_e.text())
+        self.result = self.log.run()
+        print(self.result)
+        for line in self.result:
+            self.res.append(line)
+
 
     def clean(self):
         self.res.setText("")
