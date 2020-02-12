@@ -35,6 +35,7 @@ class Logic:
         # initializing the global variables
         self.date = datetime.datetime(d, 1, 1)
         self.max_date = datetime.datetime(m_d, 12, 30)
+        self.result = []
 
     def run(self):
         """ go throughout all days """
@@ -49,10 +50,13 @@ class Logic:
         while date < self.max_date:
             if is_palindrome(date):
                 diff_years(old_date, date)
-                print(date.date(), "\n")
+                s = date.strftime("%Y%m%d")
+                self.result.append(s)
+                #print(date.date(), "\n")
                 old_date = date
             # increase the date with one day
             date += td
+        return self.result
 
 
 """ my_run = Logic(2020, 2090)
