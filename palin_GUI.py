@@ -36,7 +36,7 @@ class PalGui:
 
     def __init__(self):
         # A instance of class Logic to calculate palindrome days
-        self.log = logic.Logic(2020, 2050)
+        #self.log = logic.Logic(2020, 2050)
         self.result = []
         # Set application layout
         self.app.setStyle("Fusion")
@@ -74,12 +74,11 @@ class PalGui:
 
     def calculate(self):
         yb = int(self.y_b.text())
-        ye = (self.y_e.text())
-        self.result = self.log.run()
-        print(self.result)
+        ye = int(self.y_e.text())
+        log = logic.Logic(yb, ye)
+        self.result = log.run()
         for line in self.result:
             self.res.append(line)
-
 
     def clean(self):
         self.res.setText("")
