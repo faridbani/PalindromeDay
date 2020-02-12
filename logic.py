@@ -10,7 +10,8 @@ def diff_years(date1, date2):
     y1 = int(date1.strftime("%Y"))
     y2 = int(date2.strftime("%Y"))
     # print the difference
-    print("After ", y2-y1, " years:")
+    s = "After " + str(y2-y1) + " years:"
+    return s
 
 
 def is_palindrome(d):
@@ -49,10 +50,10 @@ class Logic:
         # Go through all days to find a Palindrome day and print it
         while date < self.max_date:
             if is_palindrome(date):
-                diff_years(old_date, date)
-                s = date.strftime("%Y%m%d")
+                dif = diff_years(old_date, date)
+                s = str(dif) + "\n" + date.strftime("%Y%m%d")
                 self.result.append(s)
-                #print(date.date(), "\n")
+
                 old_date = date
             # increase the date with one day
             date += td
