@@ -1,5 +1,6 @@
 import logic
 import sys
+from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QLineEdit
 from PyQt5.QtWidgets import QPushButton, QTextEdit, QVBoxLayout, QHBoxLayout
 
@@ -15,17 +16,23 @@ class PalGui:
     w_right = QWidget()
     # A label to get information
     lab1 = QLabel("To calculate all Palindrome days \n Please giv the begin and end year")
-    lab2 = QLabel("The begin year:")
-    lab3 = QLabel("The end year")
+
+
     lab4 = QLabel("The result:")
     # Create layouts for windows
     lay = QHBoxLayout()
     lay_left = QVBoxLayout()
     lay_right = QVBoxLayout()
     # The first textfield to giv begin date (year)
-    y_b = QLineEdit("")
+    y_b = QLineEdit()
+    lab2 = QLabel(y_b)
+    lab2.setText("The begin year:")
+    lab2.setAlignment(QtCore.Qt.AlignBottom)
     # The second textfield to giv the end date (year)
     y_e = QLineEdit("")
+    lab3 = QLabel(y_e)
+    lab3.setText("The end year:")
+    lab3.setAlignment(QtCore.Qt.AlignBottom)
     # The Calculate button
     calc_b = QPushButton("Calculate")
 
@@ -35,14 +42,8 @@ class PalGui:
     res.setReadOnly(True)
 
     def __init__(self):
-        # A instance of class Logic to calculate palindrome days
-        #self.log = logic.Logic(2020, 2050)
         self.result = []
-        # Set application layout
-        self.app.setStyle("Fusion")
 
-        #self.y_b.setMaximumHeight(35)
-        #self.y_e.setMaximumHeight(35)
         # The left Box
         self.lay_left.addWidget(self.lab1)
         self.lay_left.addWidget(self.lab2)
