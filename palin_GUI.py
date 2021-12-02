@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QPushButton, QTextEdit, QVBoxLayout, QHBoxLayout
 
 
 class PalGui:
-    """ The GUI class to use interactive date setting """
+    """ The GUI class to use interactive date settings """
 
     # The main application
     app = QApplication(sys.argv)
@@ -78,8 +78,11 @@ class PalGui:
         ye = int(self.y_e.text())
         log = logic.Logic(yb, ye)
         self.result = log.run()
-        for line in self.result:
-            self.res.append(line)
+        if self.result:
+            for line in self.result:
+                self.res.append(line)
+        else:
+            self.res.setText(f'There is no Palindromedays \n bethween  {yb} and {ye}')
 
     def clean(self):
         self.res.setText("")
